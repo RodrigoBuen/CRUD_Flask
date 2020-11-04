@@ -1,0 +1,70 @@
+{% extends "clientes/base.html" %}
+
+{% block titulo %}
+Cadastro Cliente
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<form method="post">
+    {{ form.csrf_token }}
+    <div class="form-group">
+        <label>Nome</label>
+        {{ form.nome(class="form-control") }}
+        {% if form.errors.name %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.errors.nome }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        {{ form.email(class="form-control") }}
+
+        {% if form.errors.email %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.errors.email }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label>Data de Nascimento</label>
+        {{ form.data_nascimento(class="form-control") }}
+
+        {% if form.errors.data_nascimento %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.errors.data_nascimento }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label>Profissão</label>
+        {{ form.profissao(class="form-control") }}
+
+        {% if form.errors.profissao %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.errors.profissao }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label>Sexo</label>
+        {{ form.sexo(class="form-control") }}
+
+        {% if form.errors.sexo %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.errors.sexo }}
+            </div>
+        {% endif %}
+    </div>
+
+    <button class="btn btn-success" type="submit">Cadastrar</button>
+</form>
+
+ <a href="{{ url_for('listar_clientes') }}"><button class="btn btn-primary">Voltar</button></a>
+
+{% endblock conteudo %}
